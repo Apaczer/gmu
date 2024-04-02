@@ -43,7 +43,8 @@ Table of contents
  - 3.1 GP2X defaults
  - 3.2 Dingoo A320/A330 defaults
  - 3.3 Ben NanoNote defaults
- - 3.4 Custom key mappings
+ - 3.4 MiyooCFW (PocketGO, BittBoy etc.) defaults
+ - 3.5 Custom key mappings
 4. Command line arguments
 5. Config file
 6. Additional plugins and tools
@@ -339,8 +340,70 @@ B            - Show/hide text
 
 (**) Seeking does not work with all file formats.
 
+## 3.4 MiyooCFW (PocketGO, BittBoy etc.) defaults
 
-## 3.4 Custom key mappings
+The default key mapping for the MiyooCFW system is as follows:
+
+### Global
+
+```
+R1           - Skip to next track in playlist/Start playback
+L1           - Skip to previous track in playlist
+SELECT+R1    - Seek 10 seconds forward (**)
+SELECT+L1    - Seek 10 seconds backward (**)
+X            - Pause/resume playback
+SELECT+X     - Stop playback
+RESET        - Exit player
+START        - Toggle file browser/playlist view/track info
+LEFT/RIGHT   - Increase/lower volume
+SELECT+A     - Program info
+SELECT+LEFT  - Toggle time elapsed/remaining
+```
+
+(**) Seeking does not work with all file formats.
+
+### File browser
+
+```
+A            - Play file without adding it to the playlist/Change directory
+B            - Add selected file to the playlist/Change directory
+Y            - Add selected directory and all sub directories
+```
+
+### Playlist
+
+```
+A            - Play selected track
+B            - Change play mode (continue, repeat all, 
+               repeat track, random, random+repeat)
+Y            - Remove selected track
+SELECT+Y     - Clear playlist
+SELECT+B     - Save/Load Playlist menu
+SELECT+RIGHT - Enqueue selected item
+
+Track info viewer:
+A            - Show/hide cover artwork
+B            - Show/hide text
+```
+
+### Save/Load Playlist
+
+```
+A            - Save selected playlist
+Y            - Load selected playlist
+B            - Exit to Playlist view
+SELECT+Y     - Append selected playlist to current list.
+```
+
+### Track info viewer
+
+```
+A            - Change info view mode (Text Only, Text + Cover,
+               Text + Spectrum analyzer, All)
+B            - Show/hide text
+```
+
+## 3.5 Custom key mappings
 
 You can customize Gmu's key mappings if you don't like the defaults. 
 To do that open the .keymap file in a text editor or copy it to a
