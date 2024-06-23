@@ -2,6 +2,7 @@ Build Instructions for MiyooCFW
 
 1. Cross-compile with docker:
 ```
+EXTRA_CFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" \
 CC=${CROSS_COMPILE}cc ./configure --target-device miyoo \
 --disable notify-frontend --disable web-frontend --disable log-frontend
 make clean
@@ -10,6 +11,7 @@ make default_distbin
 
 2. Local build (with default toolchain placement)
 ```
+export EXTRA_CFLAGS="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
 export CC=/opt/miyoo/usr/bin/arm-linux-cc
 ./configure --target-device miyoo --disable notify-frontend --disable web-frontend --disable log-frontend
 make clean
