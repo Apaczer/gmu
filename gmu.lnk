@@ -1,0 +1,3 @@
+title=GMU
+description=Gmu Music Player 
+exec=/mnt/apps/gmu/gmu.sh

@@ -157,7 +157,6 @@ dist: $(ALLFILES)
 distbin: $(DISTBIN_DEPS)
 
 default_distbin: $(DISTFILES)
-	@echo "Creating \033[1m$(projname)-$(TARGET).zip\033[0m"
 	$(Q)-rm -rf $(projname)-$(TARGET)
 	$(Q)-rm -rf $(projname)-$(TARGET).zip
 	$(Q)mkdir $(projname)-$(TARGET)
@@ -167,7 +166,17 @@ default_distbin: $(DISTFILES)
 	$(Q)-cp $(TARGET).keymap $(projname)-$(TARGET)/$(TARGET).keymap
 	$(Q)-cp gmuinput.$(TARGET).conf $(projname)-$(TARGET)/gmuinput.$(TARGET).conf
 	$(Q)-cp gmu-$(TARGET).sh $(projname)-$(TARGET)/gmu.sh
+ifeq ($(TARGET), miyoo)
+	@echo "Creating \033[1m$(projname)-$(TARGET).ipk\033[0m"
+	$(Q)ASSETSDIR=$(projname)-$(TARGET) VERSION=$(ver) gm2xpkg -i pkg-miyoo.cfg
+	mv gmu.bin.ipk $(projname)-$(TARGET).ipk
+	$(Q)cp gmu.lnk /tmp/
+	$(Q)ASSETSDIR=$(projname)-$(TARGET) VERSION=$(ver) gm2xpkg -c pkg-miyoo.cfg >/dev/null 2>&1
+	$(Q)cp /tmp/gmu.lnk .
+else
+	@echo "Creating \033[1m$(projname)-$(TARGET).zip\033[0m"
 	$(Q)zip -r $(projname)-$(TARGET).zip $(projname)-$(TARGET)
+endif
 	$(Q)-rm -rf $(projname)-$(TARGET)
 
 install: $(DISTFILES)
